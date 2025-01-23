@@ -1,0 +1,363 @@
+.nav css
+
+
+/* Nav css */
+/* Base styles */
+nav {
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #000000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  /* position: fixed; Fix the nav to the top */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
+  z-index: 1000; /* Ensure it stays above other content */
+}
+
+.nav-ul {
+  height: auto; /* Allow height to adjust */
+  display: flex;
+  flex-direction: row; /* Default to row for larger screens */
+  justify-content: space-evenly; /* Space items evenly */
+  padding: 10px 0;
+}
+
+li {
+  gap: 10px;
+  padding: 17px 17px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative; 
+  z-index: 1;
+}
+
+li:hover {
+  transform: scale(1.05); /* Slightly scale on hover */
+}
+
+/* Active styles */
+li.active {
+  background-color: #1a5783; /* Active background */
+  color: var(--text-secondary); /* Active text color */
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Change to column layout */
+    padding: 0.5rem 1rem;
+    width: 100%; /* Full width */
+    top: 0%; /* Align to the top */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    position: fixed;
+    border-radius: 0;
+  }
+
+  .nav-ul {
+    flex-direction: row; /* Stack items vertically */
+    justify-content: flex-start; /* Align to the start */
+    padding: 0.5rem 0;
+  }
+
+  li {
+    padding: 12px 10px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    text-align: left; /* Align text to the left */
+  }
+
+  .nav-label {
+    display: block; /* Always show labels for smaller screens */
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  li {
+    padding: 10px 12px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  ul {
+    /* padding: 0.5rem 0.2rem; */
+  }
+}
+
+
+
+
+
+
+.hero css
+
+
+Run
+Copy code
+/* Base Styles */
+.Hero-section {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 80px;
+  align-items: center;
+  padding: 40px 0;
+  transition: all 0.3s ease-in-out; /* Added for smooth layout adjustments */
+  height: auto;
+  overflow: auto;
+}
+
+
+/* About Section */
+
+.about h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.highlighted-name {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--highlight);
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left;
+}
+
+.about p {
+  margin-top: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.button {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+button {
+  background-color: var(--highlight);
+  border: none;
+  padding: 15px 40px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--text-secondary);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #0b436c;
+  transform: scale(1.05); /* Added hover scaling */
+}
+
+.download-cv {
+  text-decoration: underline;
+  color: #0078ff;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.download-cv:hover {
+  color: #0056b3;
+}
+
+.arrow-icon {
+  font-size: 0.7rem !important;
+  margin-left: 5px;
+}
+
+/* Image Section */
+.image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex: 1;
+}
+
+.design {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-bottom: 300px solid #1a5783;
+  z-index: 0;
+}
+
+.image img {
+  position: relative;
+  height: 350px;
+  z-index: 1;
+  border-radius: 50%;
+  bottom: 25px;
+  transition: transform 0.3s ease; /* Added for smooth scaling on hover */
+}
+
+/* Data Section */
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 40px 10px;
+  padding: 20px 30px;
+  border-radius: 5px;
+  background-color: #000000;
+  flex: 1;
+}
+
+.data-number {
+  color: var(--highlight);
+  font-size: 25px;
+}
+
+.data-label {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.data1,
+.data2,
+.data3 {
+  border-bottom: 1px solid #353535;
+  padding-bottom: 10px;
+}
+
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .Hero-section {
+    flex-direction: column; /* Stack content vertically */
+    margin: 20px;
+    align-items: flex-start; /* Align items to the start */
+    margin-top: 40%;
+  }
+
+  .about {
+    flex: 1; /* Allow the about section to take available space */
+    margin-bottom: 20px; /* Add some space below */
+  }
+
+  .design{
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-left: 120px solid transparent;
+      border-right: 120px solid transparent;
+      border-bottom: 176px solid #1a5783;
+      z-index: 0; 
+     }
+
+  .image {
+    flex: 1; /* Allow the image section to take available space */
+    display: flex;
+    justify-content: center; /* Center the image */
+    margin-bottom: 20px; /* Add some space below */
+    margin-top: 10%;
+  }
+
+
+  .image img {
+    height: 200px; /* Reduce image size */
+  }
+
+  .data {
+    flex-direction: row; /* Keep data items in a row */
+    justify-content: space-between; /* Space them evenly */
+    margin: 20px 0; /* Add some margin */
+  }
+  .data1, .data2, .data3 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .data-number {
+    font-size: 20px; /* Reduce font size */
+  }
+
+  .data-label {
+    font-size: 12px; /* Reduce font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .about h3 {
+    font-size: 1.2rem;
+  }
+
+  .highlighted-name {
+    font-size: 1.8rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .download-cv {
+    margin-left: 10px;
+    font-size: 0.9rem;
+  }
+
+  .image img {
+    height: 150px; /* Further reduce image size */
+  }
+
+  .data {
+    flex-direction: column; /* Stack data items vertically */
+    align-items: center; /* Center align */
+  }
+
+  .data-number {
+    font-size: 18px; /* Further reduce font size */
+  }
+
+  .data-label {
+    font-size: 10px; /* Further reduce font size */
+  }
+}
