@@ -87,7 +87,7 @@ export default function Contact() {
           </p>
           <div className="contact-experince">
             <div className="icon">
-              <ArrowOutwardOutlined fontSize="large" />
+              <ArrowOutwardOutlined fontSize="large"/>
             </div>
             <p>1+ Year of experience</p>
           </div>
