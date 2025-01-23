@@ -5,6 +5,17 @@
 .load{
     position: absolute;
     top: 25%;
-    left: 15%;
+    left: 40%;
     height: 40vh;
+}
+
+
+
+@media(max-width:767px) {
+    .load{
+        position: absolute;
+        top: 25%;
+        left: 15%;
+        height: 40vh;
+    }
 }
