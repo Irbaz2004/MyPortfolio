@@ -7,7 +7,7 @@
     margin: 30px 0px;
     background-color: var(--bg-color);
     color: var(--text-primary);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .About-content {
