@@ -13,7 +13,7 @@ export default function Services() {
     // Targeting each service data element
     const serviceItems = servicesRef.current.querySelectorAll('.service-data');
 
-    serviceItems.forEach((item) => {
+    serviceItems.forEach((item, index) => {
       gsap.fromTo(
         item,
         { opacity: 0, y: 50 }, // Initial state (hidden and slightly offset)
@@ -30,6 +30,38 @@ export default function Services() {
         }
       );
     });
+
+    // Animate service heading separately
+    gsap.fromTo(
+      servicesRef.current.querySelector('.heading-service'),
+      { opacity: 0, y: -50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: servicesRef.current.querySelector('.heading-service'),
+          start: 'top 80%',
+        },
+      }
+    );
+
+    gsap.fromTo(
+      servicesRef.current.querySelector('.service-h2'),
+      { opacity: 0, y: -50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: servicesRef.current.querySelector('.service-h2'),
+          start: 'top 80%',
+        },
+      }
+    );
+
   }, []);
 
   return (
