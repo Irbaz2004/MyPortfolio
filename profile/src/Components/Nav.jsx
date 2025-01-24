@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   RoofingOutlined,
   PersonOutlineOutlined,
@@ -7,12 +7,10 @@ import {
   SourceOutlined,
   EmailOutlined,
 } from '@mui/icons-material';
-import { gsap } from 'gsap';
 import '../Style/Nav.css';
 
 export default function Nav() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const navRef = useRef(null);
 
   const navItems = [
     { id: 0, icon: <RoofingOutlined />, label: 'Home', section: 'home' },
@@ -37,37 +35,9 @@ export default function Nav() {
     }
   };
 
-  // Add hover animation using GSAP
-  useEffect(() => {
-    const navElements = navRef.current?.children;
-
-    if (navElements) {
-      Array.from(navElements).forEach((item) => {
-        const icon = item.querySelector('svg');
-        const label = item.querySelector('.nav-label');
-
-        gsap.fromTo(
-          item,
-          { opacity: 0, y: -20 },
-          { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.2 }
-        );
-
-        item.addEventListener('mouseenter', () => {
-          gsap.to(icon, { scale: 1.3, duration: 0.3, ease: 'power2.out' });
-          gsap.to(label, { opacity: 1, x: 10, duration: 0.3 });
-        });
-
-        item.addEventListener('mouseleave', () => {
-          gsap.to(icon, { scale: 1, duration: 0.3 });
-          gsap.to(label, { opacity: 0, x: 0, duration: 0.3 });
-        });
-      });
-    }
-  }, []);
-
   return (
     <nav>
-      <ul className="nav-ul" ref={navRef}>
+      <ul className="nav-ul">
         {navItems.map((item) => (
           <li
             key={item.id}
