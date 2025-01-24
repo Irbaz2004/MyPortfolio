@@ -11,38 +11,48 @@ export default function MyImage() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animating the profile image
-    gsap.fromTo(
-      myImageRef.current.querySelector('.my'),
-      { opacity: 0, scale: 0.5 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: myImageRef.current.querySelector('.my'),
-          start: 'top 80%',
-        },
-      }
-    );
+    // Conditional animations for larger screens
+    if (window.innerWidth > 768) {
+      // Animate the profile image
+      gsap.fromTo(
+        myImageRef.current.querySelector('.my'),
+        { opacity: 0, scale: 0.5 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: myImageRef.current.querySelector('.my'),
+            start: 'top 80%',
+          },
+        }
+      );
 
-    // Animating the LinkedIn and GitHub icons
-    gsap.fromTo(
-      myImageRef.current.querySelectorAll('.developer, .developer1'),
-      { opacity: 0, x: -50 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: myImageRef.current,
-          start: 'top 90%',
-        },
-      }
-    );
+      // Animate LinkedIn and GitHub icons
+      gsap.fromTo(
+        myImageRef.current.querySelectorAll('.developer, .developer1'),
+        { opacity: 0, x: -50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: myImageRef.current,
+            start: 'top 90%',
+          },
+        }
+      );
+    } else {
+      // Ensure elements are visible on smaller screens
+      const elements = myImageRef.current.querySelectorAll('.my, .developer, .developer1');
+      elements.forEach((element) => {
+        element.style.opacity = 1;
+        element.style.transform = 'none';
+      });
+    }
   }, []);
 
   const handleNavigation = () => {
@@ -56,14 +66,14 @@ export default function MyImage() {
   return (
     <div ref={myImageRef} className="myimage">
       <div className="developer" onClick={handleNavigation}>
-        <LinkedIn/>
+        <LinkedIn />
         <p>Let's Connect</p>
       </div>
 
       <img src={Image} alt="Profile Pic" className="my" />
 
       <div className="developer1" onClick={handleNavigationgithub}>
-        <ExposureOutlined/>
+        <ExposureOutlined />
         <p>Repository</p>
       </div>
     </div>
