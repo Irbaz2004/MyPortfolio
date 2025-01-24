@@ -14,12 +14,6 @@ html,body {
   width: 100%;
   overflow-x: hidden;
 }
-
-@media (max-width: 768px) {
-  .custom-cursor {
-    display: block;
-  }
-}
 ::-webkit-scrollbar {
   width: 10px;
 }
