@@ -15,6 +15,11 @@ html,body {
   overflow-x: hidden;
 }
 
+@media (max-width: 768px) {
+  .custom-cursor {
+    display: block;
+  }
+}
 ::-webkit-scrollbar {
   width: 10px;
 }
