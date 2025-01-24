@@ -10,55 +10,65 @@ export default function Myresume() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animating the circle
-    gsap.fromTo(
-      resumeRef.current.querySelector('.circle'),
-      { scale: 0, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1,
-        ease: 'bounce.out',
-        scrollTrigger: {
-          trigger: resumeRef.current.querySelector('.circle'),
-          start: 'top 80%',
-        },
-      }
-    );
+    // Conditional animations for larger screens
+    if (window.innerWidth > 768) {
+      // Animating the circle
+      gsap.fromTo(
+        resumeRef.current.querySelector('.circle'),
+        { scale: 0, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          ease: 'bounce.out',
+          scrollTrigger: {
+            trigger: resumeRef.current.querySelector('.circle'),
+            start: 'top 80%',
+          },
+        }
+      );
 
-    // Animating the experience items
-    gsap.fromTo(
-      resumeRef.current.querySelectorAll('.experience-item'),
-      { x: -50, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: resumeRef.current,
-          start: 'top 90%',
-        },
-      }
-    );
+      // Animating the experience items
+      gsap.fromTo(
+        resumeRef.current.querySelectorAll('.experience-item'),
+        { x: -50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: resumeRef.current,
+            start: 'top 90%',
+          },
+        }
+      );
 
-    // Animating the icons
-    gsap.fromTo(
-      resumeRef.current.querySelectorAll('.icon'),
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: resumeRef.current,
-          start: 'top 85%',
-        },
-      }
-    );
+      // Animating the icons
+      gsap.fromTo(
+        resumeRef.current.querySelectorAll('.icon'),
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: resumeRef.current,
+            start: 'top 85%',
+          },
+        }
+      );
+    } else {
+      // Ensure elements are visible on smaller screens
+      const elements = resumeRef.current.querySelectorAll('.circle, .experience-item, .icon');
+      elements.forEach((element) => {
+        element.style.opacity = 1;
+        element.style.transform = 'none';
+      });
+    }
   }, []);
 
   const handleNavigationNexion = () => {
