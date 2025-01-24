@@ -93,6 +93,13 @@ span {
 .myemail, .mynumber {
     text-decoration: underline;
 }
+.content,
+.specialist,
+.contact-info {
+  opacity: 1; /* Ensure sections are visible by default */
+  transform: translateY(0); /* Reset any transform */
+  transition: none; /* Disable transitions as a fallback */
+}
 
 /* Responsive styles */
 @media (max-width: 768px) {
