@@ -10,58 +10,64 @@ export default function Services() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Targeting each service data element
-    const serviceItems = servicesRef.current.querySelectorAll('.service-data');
-
-    serviceItems.forEach((item, index) => {
+    // Only animate for larger screens (tablets and desktops)
+    if (window.innerWidth > 768) {
+      // Animate heading and subheading
       gsap.fromTo(
-        item,
-        { opacity: 0, y: 50 }, // Initial state (hidden and slightly offset)
+        servicesRef.current.querySelector('.heading-service'),
+        { opacity: 0, y: -50 },
         {
           opacity: 1,
           y: 0,
           duration: 1,
           ease: 'power3.out',
           scrollTrigger: {
-            trigger: item,
-            start: 'top 80%', // Start animation when 80% of the element is in view
+            trigger: servicesRef.current.querySelector('.heading-service'),
+            start: 'top 80%',
+          },
+        }
+      );
+
+      gsap.fromTo(
+        servicesRef.current.querySelector('.service-h2'),
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: servicesRef.current.querySelector('.service-h2'),
+            start: 'top 80%',
+          },
+        }
+      );
+
+      // Animate all service items with stagger effect
+      gsap.fromTo(
+        servicesRef.current.querySelectorAll('.service-data'),
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.2, // Staggered animation (delay between each item)
+          scrollTrigger: {
+            trigger: servicesRef.current.querySelector('.service'),
+            start: 'top 80%', // Trigger when the service section is in view
             toggleActions: 'play none none reverse',
           },
         }
       );
-    });
-
-    // Animate service heading separately
-    gsap.fromTo(
-      servicesRef.current.querySelector('.heading-service'),
-      { opacity: 0, y: -50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: servicesRef.current.querySelector('.heading-service'),
-          start: 'top 80%',
-        },
-      }
-    );
-
-    gsap.fromTo(
-      servicesRef.current.querySelector('.service-h2'),
-      { opacity: 0, y: -50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: servicesRef.current.querySelector('.service-h2'),
-          start: 'top 80%',
-        },
-      }
-    );
-
+    } else {
+      // For smaller screens (mobile), ensure all elements are visible without animation
+      const serviceItems = servicesRef.current.querySelectorAll('.service-data, .heading-service, .service-h2');
+      serviceItems.forEach(item => {
+        item.style.opacity = 1;
+        item.style.transform = 'none';
+      });
+    }
   }, []);
 
   return (

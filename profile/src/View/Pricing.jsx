@@ -19,7 +19,7 @@ export default function Pricing() {
   React.useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animation for the header section
+    // Header animation
     gsap.fromTo(
       '.pricing-h4',
       { opacity: 0, y: -50 },
@@ -34,7 +34,7 @@ export default function Pricing() {
         },
       }
     );
-    
+
     gsap.fromTo(
       '.pricing-h2',
       { opacity: 0, y: -50 },
@@ -50,7 +50,7 @@ export default function Pricing() {
       }
     );
 
-    // Animation for the pricing cards
+    // Pricing cards animation
     gsap.fromTo(
       '.pricing-card',
       { opacity: 0, y: 50 },
@@ -59,7 +59,7 @@ export default function Pricing() {
         y: 0,
         duration: 1,
         ease: 'power3.out',
-        stagger: 0.3,
+        stagger: 0.3, // Adds a stagger effect to the cards
         scrollTrigger: {
           trigger: '.pricing-card',
           start: 'top 80%',

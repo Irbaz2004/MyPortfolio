@@ -31,6 +31,23 @@ export default function Projects() {
         },
       }
     );
+
+    // Animating project content individually
+    gsap.fromTo(
+      projectsRef.current.querySelectorAll('.project-content'),
+      { opacity: 0, x: -100 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: projectsRef.current,
+          start: 'top 80%',
+        },
+      }
+    );
   }, []);
 
   const projects = [

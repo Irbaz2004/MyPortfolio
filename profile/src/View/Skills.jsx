@@ -19,26 +19,36 @@ export default function Skills() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Targeting the skill items
-    const skillItems = skillsRef.current.querySelectorAll('.image-col');
+    // Only trigger GSAP animations for larger screens (tablets and desktops)
+    if (window.innerWidth > 768) {
+      // Targeting the skill items
+      const skillItems = skillsRef.current.querySelectorAll('.image-col');
 
-    skillItems.forEach((item) => {
-      gsap.fromTo(
-        item,
-        { opacity: 0, y: 50 }, // Initial state (hidden and slightly offset)
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 80%', // Start the animation when 80% of the item is in view
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    });
+      skillItems.forEach((item) => {
+        gsap.fromTo(
+          item,
+          { opacity: 0, y: 50 }, // Initial state (hidden and slightly offset)
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 80%', // Start the animation when 80% of the item is in view
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      });
+    } else {
+      // For mobile screens, ensure skill items are visible without animation
+      const skillItems = skillsRef.current.querySelectorAll('.image-col');
+      skillItems.forEach((item) => {
+        item.style.opacity = 1;
+        item.style.transform = 'none';
+      });
+    }
   }, []);
 
   return (

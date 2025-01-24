@@ -24,45 +24,48 @@ export default function Contact() {
   const formRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Only initialize GSAP and ScrollTrigger if the screen width is larger than 768px
+    if (window.innerWidth > 768) {
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Animating the input fields and the submit button
-    const inputFields = formRef.current.querySelectorAll("input, textarea");
-    const submitButton = formRef.current.querySelector(".send-button");
+      // Animating the input fields and the submit button
+      const inputFields = formRef.current.querySelectorAll("input, textarea");
+      const submitButton = formRef.current.querySelector(".send-button");
 
-    gsap.fromTo(
-      inputFields,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: formRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+      gsap.fromTo(
+        inputFields,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
 
-    // Animating the submit button
-    gsap.fromTo(
-      submitButton,
-      { opacity: 0, scale: 0.8 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1.5,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: submitButton,
-          start: "top 75%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+      // Animating the submit button
+      gsap.fromTo(
+        submitButton,
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.5,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: submitButton,
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
   }, []);
 
   const handleChange = (e) => {
