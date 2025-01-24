@@ -6,3 +6,11 @@
   position: relative;
   overflow: auto;
 }
+
+
+
+@media (max-width: 768px) {
+  .footer {
+    margin-top: 50px;
+  }
+}

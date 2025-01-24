@@ -42,7 +42,7 @@ function App() {
           <CustomCursor />
           <Header onNavigate={scrollToSection} />
           <div className="App">
-            <section id="hero">
+            <section id="home">
               <Hero />
             </section>
             <section id="about">

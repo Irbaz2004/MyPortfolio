@@ -38,8 +38,9 @@
     background-color: var(--bg-color);
     color: var(--text-primary);
     transition: background-color 0.3s, color 0.3s;
+   
   }
-
+ 
 .brand-icon{
     color: var(--highlight);
 }  
