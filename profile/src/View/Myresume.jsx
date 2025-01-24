@@ -21,7 +21,7 @@ export default function Myresume() {
         ease: 'bounce.out',
         scrollTrigger: {
           trigger: resumeRef.current.querySelector('.circle'),
-          start: 'top 80%', // Start when circle comes into view
+          start: 'top 80%',
         },
       }
     );
@@ -38,7 +38,7 @@ export default function Myresume() {
         stagger: 0.2,
         scrollTrigger: {
           trigger: resumeRef.current,
-          start: 'top 90%', // Start when the container comes into view
+          start: 'top 90%',
         },
       }
     );
@@ -55,7 +55,7 @@ export default function Myresume() {
         stagger: 0.2,
         scrollTrigger: {
           trigger: resumeRef.current,
-          start: 'top 85%', // Start when the icons come into view
+          start: 'top 85%',
         },
       }
     );
