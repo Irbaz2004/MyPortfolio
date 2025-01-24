@@ -13,41 +13,44 @@ export default function Projects() {
   const projectsRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Only apply GSAP animations if it's not a mobile device
+    if (window.innerWidth > 768) {
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Animating the project items
-    gsap.fromTo(
-      projectsRef.current.querySelectorAll('.project-showcase'),
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: projectsRef.current,
-          start: 'top 80%', // Start when the top of the project section comes into view
-        },
-      }
-    );
+      // Animating the project items
+      gsap.fromTo(
+        projectsRef.current.querySelectorAll('.project-showcase'),
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: projectsRef.current,
+            start: 'top 80%', // Start when the top of the project section comes into view
+          },
+        }
+      );
 
-    // Animating project content individually
-    gsap.fromTo(
-      projectsRef.current.querySelectorAll('.project-content'),
-      { opacity: 0, x: -100 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: projectsRef.current,
-          start: 'top 80%',
-        },
-      }
-    );
+      // Animating project content individually
+      gsap.fromTo(
+        projectsRef.current.querySelectorAll('.project-content'),
+        { opacity: 0, x: -100 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: projectsRef.current,
+            start: 'top 80%',
+          },
+        }
+      );
+    }
   }, []);
 
   const projects = [

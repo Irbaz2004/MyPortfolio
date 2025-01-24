@@ -47,9 +47,10 @@ span {
 .developer1{
     background-color: white;
     color: var(--text-primary);
-    border: 1px dashed var(--text-primary);
+    border: 1px dashed var(--highlight);
     margin-left: 30%;
     margin-top: 10%;
+    color: var(--highlight);
 }
 
 .my {

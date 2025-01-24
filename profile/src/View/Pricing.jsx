@@ -17,55 +17,58 @@ import '../Style/Pricing.css'; // Import the CSS file
 
 export default function Pricing() {
   React.useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Check if the device is not mobile (screen width > 768px)
+    if (window.innerWidth > 768) {
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Header animation
-    gsap.fromTo(
-      '.pricing-h4',
-      { opacity: 0, y: -50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.pricing-h4',
-          start: 'top 80%',
-        },
-      }
-    );
+      // Header animation
+      gsap.fromTo(
+        '.pricing-h4',
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.pricing-h4',
+            start: 'top 80%',
+          },
+        }
+      );
 
-    gsap.fromTo(
-      '.pricing-h2',
-      { opacity: 0, y: -50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.pricing-h2',
-          start: 'top 80%',
-        },
-      }
-    );
+      gsap.fromTo(
+        '.pricing-h2',
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.pricing-h2',
+            start: 'top 80%',
+          },
+        }
+      );
 
-    // Pricing cards animation
-    gsap.fromTo(
-      '.pricing-card',
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.3, // Adds a stagger effect to the cards
-        scrollTrigger: {
-          trigger: '.pricing-card',
-          start: 'top 80%',
-        },
-      }
-    );
+      // Pricing cards animation
+      gsap.fromTo(
+        '.pricing-card',
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.3, // Adds a stagger effect to the cards
+          scrollTrigger: {
+            trigger: '.pricing-card',
+            start: 'top 80%',
+          },
+        }
+      );
+    }
   }, []);
 
   return (

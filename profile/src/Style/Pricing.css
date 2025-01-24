@@ -6,13 +6,11 @@
 
 .pricing-h4 {
     font-size: 1.5rem;
-    color: #333; /* Darker color for the header */
     text-align: center;
 }
 
 .pricing-h2 {
     font-size: 2.5rem;
-    color: #333; /* Darker color for the main title */
     margin: 10px 0;
 }
 
