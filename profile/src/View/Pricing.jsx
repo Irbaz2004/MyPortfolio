@@ -11,9 +11,63 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Typography from '@mui/joy/Typography';
 import Check from '@mui/icons-material/Check';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../Style/Pricing.css'; // Import the CSS file
 
 export default function Pricing() {
+  React.useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animation for the header section
+    gsap.fromTo(
+      '.pricing-h4',
+      { opacity: 0, y: -50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.pricing-h4',
+          start: 'top 80%',
+        },
+      }
+    );
+    
+    gsap.fromTo(
+      '.pricing-h2',
+      { opacity: 0, y: -50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.pricing-h2',
+          start: 'top 80%',
+        },
+      }
+    );
+
+    // Animation for the pricing cards
+    gsap.fromTo(
+      '.pricing-card',
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: '.pricing-card',
+          start: 'top 80%',
+        },
+      }
+    );
+  }, []);
+
   return (
     <div className="pricing">
       <Box
@@ -32,11 +86,11 @@ export default function Pricing() {
             mb: 4,
           }}
         >
-        </Box>
-        <div>
           <h4 className="pricing-h4">Pricing Package</h4>
-          <h2 className='pricing-h2'>Amazing <span>Pricing</span> For Your Projects.</h2>
-        </div>
+          <h2 className="pricing-h2">
+            Amazing <span>Pricing</span> For Your Projects.
+          </h2>
+        </Box>
 
         {/* Pricing Cards Section */}
         <Box
@@ -50,7 +104,12 @@ export default function Pricing() {
           }}
         >
           {/* Basic Plan */}
-          <Card size="lg" variant="outlined" sx={{ minWidth: 300, maxWidth: 400 }}>
+          <Card
+            className="pricing-card"
+            size="lg"
+            variant="outlined"
+            sx={{ minWidth: 300, maxWidth: 400 }}
+          >
             <Chip size="sm" variant="outlined" color="neutral">
               BASIC
             </Chip>
@@ -104,6 +163,7 @@ export default function Pricing() {
 
           {/* Standard Plan */}
           <Card
+            className="pricing-card"
             size="lg"
             variant="solid"
             color="neutral"
@@ -166,7 +226,12 @@ export default function Pricing() {
           </Card>
 
           {/* Premium Plan */}
-          <Card size="lg" variant="outlined" sx={{ minWidth: 300, maxWidth: 400 }}>
+          <Card
+            className="pricing-card"
+            size="lg"
+            variant="outlined"
+            sx={{ minWidth: 300, maxWidth: 400 }}
+          >
             <Chip size="sm" variant="outlined" color="neutral">
               PREMIUM
             </Chip>

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import emailjs from "emailjs-com";
 import { TextField, Snackbar, Alert } from "@mui/material";
 import { ArrowOutwardOutlined } from "@mui/icons-material";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../Style/Contact.css";
 
 export default function Contact() {
@@ -18,6 +20,50 @@ export default function Contact() {
     type: "", // "success" or "error"
     message: "",
   });
+
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animating the input fields and the submit button
+    const inputFields = formRef.current.querySelectorAll("input, textarea");
+    const submitButton = formRef.current.querySelector(".send-button");
+
+    gsap.fromTo(
+      inputFields,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Animating the submit button
+    gsap.fromTo(
+      submitButton,
+      { opacity: 0, scale: 0.8 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.5,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: submitButton,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }, []);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -87,7 +133,7 @@ export default function Contact() {
           </p>
           <div className="contact-experince">
             <div className="icon">
-              <ArrowOutwardOutlined fontSize="large"/>
+              <ArrowOutwardOutlined fontSize="large" />
             </div>
             <p>1+ Year of experience</p>
           </div>
@@ -110,7 +156,7 @@ export default function Contact() {
             <p>Custom Design Support</p>
           </div>
         </div>
-        <form className="contact-input" onSubmit={handleSubmit}>
+        <form ref={formRef} className="contact-input" onSubmit={handleSubmit}>
           <div className="input-row">
             <TextField
               id="fullname"
@@ -162,31 +208,31 @@ export default function Contact() {
           </button>
         </form>
       </div>
-      <Snackbar
-  open={alert.open}
-  autoHideDuration={6000}
-  onClose={handleCloseAlert}
-  anchorOrigin={{ vertical: "top", horizontal: "center" }}
-  sx={{
-    "& .MuiAlert-filled": {
-      backgroundColor: "black", // Set the background color to black
-      color: "white", // Change text color to white for better contrast
-    },
-  }}
->
-  <Alert
-    onClose={handleCloseAlert}
-    severity={alert.type}
-    variant="filled"
-    sx={{
-      backgroundColor: "black", // Ensure the Alert itself is styled if required
-      color: "white",
-    }}
-  >
-    {alert.message}
-  </Alert>
-</Snackbar>
 
+      <Snackbar
+        open={alert.open}
+        autoHideDuration={6000}
+        onClose={handleCloseAlert}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        sx={{
+          "& .MuiAlert-filled": {
+            backgroundColor: "black",
+            color: "white",
+          },
+        }}
+      >
+        <Alert
+          onClose={handleCloseAlert}
+          severity={alert.type}
+          variant="filled"
+          sx={{
+            backgroundColor: "black",
+            color: "white",
+          }}
+        >
+          {alert.message}
+        </Alert>
+      </Snackbar>
     </>
   );
 }

@@ -175,7 +175,7 @@ button:hover {
   .design {
     border-left: 150px solid transparent;
     border-right: 150px solid transparent;
-    border-bottom: 200px solid black;
+    border-bottom: 200px solid var(--highlight);
   }
 
   .data {
@@ -219,6 +219,6 @@ button:hover {
   .design {
     border-left: 100px solid transparent;
     border-right: 100px solid transparent;
-    border-bottom: 150px solid black;
+    border-bottom: 150px solid var(--highlight);
   }
 }

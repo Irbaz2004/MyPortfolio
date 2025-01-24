@@ -1,6 +1,4 @@
-
-
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
@@ -8,8 +6,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { Insights } from '@mui/icons-material';
 import { LinkedIn, Instagram, GitHub, Twitter } from '@mui/icons-material';
+import gsap from 'gsap';
 import '../Style/Header.css';
-import '../Style/Theme.css'
+import '../Style/Theme.css';
 
 const DarkModeSwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -58,12 +57,39 @@ const DarkModeSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function Header() {
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  React.useEffect(() => {
+  // References for animations
+  const brandRef = useRef(null);
+  const socialIconsRef = useRef(null);
+  const themeRef = useRef(null);
+
+  // Dark mode effect
+  useEffect(() => {
     const theme = isDarkMode ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', theme);
   }, [isDarkMode]);
+
+  // GSAP Animations
+  useEffect(() => {
+    gsap.fromTo(
+      brandRef.current,
+      { x: -100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: 'power4.out' }
+    );
+
+    gsap.fromTo(
+      socialIconsRef.current.children,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power4.out' }
+    );
+
+    gsap.fromTo(
+      themeRef.current,
+      { scale: 0 },
+      { scale: 1, duration: 1, ease: 'back.out(1.7)' }
+    );
+  }, []);
 
   const handleChange = () => {
     setIsDarkMode((prev) => !prev);
@@ -72,47 +98,47 @@ export default function Header() {
   return (
     <Box>
       <div className="header">
-        <div className="Brand">
-          <Insights className="brand-icon"/>
+        <div className="Brand" ref={brandRef}>
+          <Insights className="brand-icon" />
           <h2>iRuz</h2>
         </div>
 
-        <div className="social-icon">
-      <a
-        href="https://www.linkedin.com/in/irbaz-ahmed-s-a6bba4332/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="linkedin-icon headericons"
-      >
-        <LinkedIn />
-      </a>
-      <a
-        href="https://www.instagram.com/irbazahmed2025/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="instagram-icon headericons"
-      >
-        <Instagram />
-      </a>
-      <a
-        href="https://github.com/Irbaz2004"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="github-icon headericons"
-      >
-        <GitHub />
-      </a>
-      <a
-        href="https://x.com/irbaz_ahme52909"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="telegram-icon headericons"
-      >
-        <Twitter />
-      </a>
-    </div>
+        <div className="social-icon" ref={socialIconsRef}>
+          <a
+            href="https://www.linkedin.com/in/irbaz-ahmed-s-a6bba4332/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="linkedin-icon headericons"
+          >
+            <LinkedIn />
+          </a>
+          <a
+            href="https://www.instagram.com/irbazahmed2025/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="instagram-icon headericons"
+          >
+            <Instagram />
+          </a>
+          <a
+            href="https://github.com/Irbaz2004"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="github-icon headericons"
+          >
+            <GitHub />
+          </a>
+          <a
+            href="https://x.com/irbaz_ahme52909"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="telegram-icon headericons"
+          >
+            <Twitter />
+          </a>
+        </div>
 
-        <div className="theme">
+        <div className="theme" ref={themeRef}>
           <FormControlLabel
             control={<DarkModeSwitch checked={isDarkMode} onChange={handleChange} />}
             label={isDarkMode ? 'Dark Mode' : 'Light Mode'}

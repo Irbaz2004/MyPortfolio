@@ -1,16 +1,46 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Email, Call } from '@mui/icons-material';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import '../Style/About.css';
 
 export default function AboutContent() {
+  const aboutRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Targeting the sections for animations
+    const sections = aboutRef.current.querySelectorAll('.content, .specialist, .contact-info');
+
+    sections.forEach((section, index) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%', // Animation starts when the section is 80% visible
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+    });
+  }, []);
+
   return (
-    <>
+    <div ref={aboutRef} className="about-section">
       <div className="content">
         <h4 className="about-heading">About Me</h4>
         <h2 className="title about-h2">
           Empowering Digital Products with <span>Innovative Solutions</span>
         </h2>
         <p className="about-para">
-          Hi, I'm S Irbaz Ahmed, a full-stack developer and data science enthusiast with a passion for innovation and problem-solving. I specialize in creating seamless and dynamic web experiences using modern technologies like React.js, Node.js, Python, and POstgreSQL. With a strong focus on intuitive design and data-driven decision-making, I aim to craft impactful digital solutions that leave a lasting impression.
+          Hi, I'm S Irbaz Ahmed, a full-stack developer and data science enthusiast with a passion for innovation and problem-solving. I specialize in creating seamless and dynamic web experiences using modern technologies like React.js, Node.js, Python, and PostgreSQL. With a strong focus on intuitive design and data-driven decision-making, I aim to craft impactful digital solutions that leave a lasting impression.
         </p>
       </div>
       <div className="specialist">
@@ -29,6 +59,6 @@ export default function AboutContent() {
           <p className="mynumber">+91 9363466343</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }

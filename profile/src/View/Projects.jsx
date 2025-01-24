@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../Style/Projects.css';
 import ProjectImage from '../Components/Project_Image';
 import ProjectContent from '../Components/Project_Content';
@@ -6,8 +6,33 @@ import savor from '../assets/savor speactaron project image.png';
 import rescipe from '../assets/Recipe project image.png';
 import lbc from '../assets/LBC project image.png';
 import ics from '../assets/iruzcallspace.png';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function Projects() {
+  const projectsRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animating the project items
+    gsap.fromTo(
+      projectsRef.current.querySelectorAll('.project-showcase'),
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: projectsRef.current,
+          start: 'top 80%', // Start when the top of the project section comes into view
+        },
+      }
+    );
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -16,8 +41,7 @@ export default function Projects() {
       subtitle: 'Restaurant',
       description:
         'A restaurant website that allows users to browse and order food, juices, cakes, desserts, and more with ease.',
-        link: 'https://savourspectrum.pages.dev/',
-        
+      link: 'https://savourspectrum.pages.dev/',
     },
     {
       id: 2,
@@ -26,7 +50,7 @@ export default function Projects() {
       subtitle: 'Recipe Finder',
       description:
         'An intuitive recipe finder platform that helps users discover recipes using a food API for quick and personalized results.',
-        link: 'https://recipestalk.vercel.app/',
+      link: 'https://recipestalk.vercel.app/',
     },
     {
       id: 3,
@@ -35,7 +59,7 @@ export default function Projects() {
       subtitle: 'E-commerce',
       description:
         'An e-commerce website offering premium leather products, enabling users to shop for high-quality leather items online.',
-        link: 'https://lbc-5mco.vercel.app/',
+      link: 'https://lbc-5mco.vercel.app/',
     },
     {
       id: 4,
@@ -44,13 +68,12 @@ export default function Projects() {
       subtitle: 'Video Call Platform',
       description:
         'A modern video call website utilizing ZEGOCLOUD API for seamless online video communication and meetings.',
-        link: 'https://vcall-lovat.vercel.app/',
+      link: 'https://vcall-lovat.vercel.app/',
     },
   ];
-  
 
   return (
-    <div className="project">
+    <div className="project" ref={projectsRef}>
       {/* Header Section */}
       <h4 className="project-h4">Latest Projects</h4>
       <h2 className='project-h2'>
@@ -76,8 +99,6 @@ export default function Projects() {
           </div>
         );
       })}
-
-    
     </div>
   );
 }

@@ -20,7 +20,7 @@ function App() {
     // Set a timeout to remove the loading screen after 5 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 4000);
 
     // Clear the timeout if the component unmounts to avoid memory leaks
     return () => clearTimeout(timer);
