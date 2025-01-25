@@ -7,23 +7,28 @@ export default function ProjectContent({ title, subtitle, description, githubLin
   const contentRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Check if the device is mobile based on the screen width
+    const isMobile = window.innerWidth <= 768;
 
-    // Animating the project content when it enters the viewport
-    gsap.fromTo(
-      contentRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: 'top 80%', // Trigger when the content reaches 80% of the viewport
-        },
-      }
-    );
+    if (!isMobile) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Animating the project content when it enters the viewport
+      gsap.fromTo(
+        contentRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: 'top 80%', // Trigger when the content reaches 80% of the viewport
+          },
+        }
+      );
+    }
   }, []);
 
   return (

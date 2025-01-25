@@ -6,23 +6,28 @@ export default function ProjectImage({ image }) {
   const imageRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Check if the device is mobile based on the screen width
+    const isMobile = window.innerWidth <= 768;
 
-    // Animating the project image when it enters the viewport
-    gsap.fromTo(
-      imageRef.current,
-      { opacity: 0, scale: 0.8 }, // Initial state: invisible and scaled down
-      {
-        opacity: 1,
-        scale: 1, // Final state: fully visible and scaled to original size
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: 'top 80%', // Trigger when the image reaches 80% of the viewport
-        },
-      }
-    );
+    if (!isMobile) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Animating the project image when it enters the viewport
+      gsap.fromTo(
+        imageRef.current,
+        { opacity: 0, scale: 0.8 }, // Initial state: invisible and scaled down
+        {
+          opacity: 1,
+          scale: 1, // Final state: fully visible and scaled to original size
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: imageRef.current,
+            start: 'top 80%', // Trigger when the image reaches 80% of the viewport
+          },
+        }
+      );
+    }
   }, []);
 
   return (
