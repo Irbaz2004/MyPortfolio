@@ -10,36 +10,61 @@ export default function AboutContent() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Only enable animations for devices with larger screens
-    if (window.innerWidth > 768) {
-      // Target sections for animations
-      const sections = aboutRef.current.querySelectorAll('.content, .specialist, .contact-info');
+    const sections = aboutRef.current.querySelectorAll('.content, .specialist, .contact-info');
 
+    // GSAP Animations for Desktop View
+    const desktopAnimation = () => {
       sections.forEach((section) => {
         gsap.fromTo(
           section,
-          { opacity: 0, y: 50 }, // Initial state
+          { opacity: 0, y: 50 },
           {
             opacity: 1,
             y: 0,
-            duration: 1,
+            duration: 1.2,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: section,
-              start: 'top 95%', // Trigger animation earlier for mobile
+              start: 'top 80%',
               toggleActions: 'play none none reverse',
             },
           }
         );
       });
-    } else {
-      // Ensure all sections are visible by default on smaller screens
-      const sections = aboutRef.current.querySelectorAll('.content, .specialist, .contact-info');
+    };
+
+    // GSAP Animations for Mobile View
+    const mobileAnimation = () => {
       sections.forEach((section) => {
-        section.style.opacity = 1; // Make sure it's visible
-        section.style.transform = 'translateY(0)'; // Reset any transforms
+        gsap.fromTo(
+          section,
+          { opacity: 0, x: 30 }, // Slight horizontal slide-in for mobile
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 90%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
       });
+    };
+
+    // Apply animations based on screen size
+    if (window.innerWidth > 768) {
+      desktopAnimation();
+    } else {
+      mobileAnimation();
     }
+
+    // Cleanup ScrollTrigger instances on component unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   return (
