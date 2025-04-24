@@ -13,15 +13,13 @@ import Check from '@mui/icons-material/Check';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import '../Style/Pricing.css'; // Import the CSS file
+import '../Style/Pricing.css';
 
 export default function Pricing() {
   React.useEffect(() => {
-    // Check if the device is not mobile (screen width > 768px)
     if (window.innerWidth > 768) {
       gsap.registerPlugin(ScrollTrigger);
 
-      // Header animation
       gsap.fromTo(
         '.pricing-h4',
         { opacity: 0, y: -50 },
@@ -52,7 +50,6 @@ export default function Pricing() {
         }
       );
 
-      // Pricing cards animation
       gsap.fromTo(
         '.pricing-card',
         { opacity: 0, y: 50 },
@@ -61,7 +58,7 @@ export default function Pricing() {
           y: 0,
           duration: 1,
           ease: 'power3.out',
-          stagger: 0.3, // Adds a stagger effect to the cards
+          stagger: 0.3,
           scrollTrigger: {
             trigger: '.pricing-card',
             start: 'top 80%',
@@ -82,20 +79,13 @@ export default function Pricing() {
           mb: 5,
         }}
       >
-        {/* Header Section */}
-        <Box
-          sx={{
-            textAlign: 'center',
-            mb: 4,
-          }}
-        >
+        <Box sx={{ textAlign: 'center', mb: 4 }}>
           <h4 className="pricing-h4">Pricing Package</h4>
           <h2 className="pricing-h2">
             Amazing <span>Pricing</span> For Your Projects.
           </h2>
         </Box>
 
-        {/* Pricing Cards Section */}
         <Box
           sx={{
             width: '100%',
@@ -103,7 +93,7 @@ export default function Pricing() {
             justifyContent: 'center',
             gap: 3,
             mt: 5,
-            flexWrap: 'wrap', // Allow wrapping for smaller screens
+            flexWrap: 'wrap',
           }}
         >
           {/* Basic Plan */}
@@ -117,45 +107,19 @@ export default function Pricing() {
               BASIC
             </Chip>
             <Typography level="h2">Basic</Typography>
+            {/* <Typography level="body-sm" sx={{ mt: 1, mb: 1 }}>₹4,999 / Project</Typography> */}
             <Divider inset="none" />
             <List size="sm" sx={{ mx: 'calc(-1 * var(--ListItem-paddingX))' }}>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                1 Custom Website Design
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Mobile-Friendly Layout
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Basic SEO Setup
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Contact Form Integration
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                1 Revision
-              </ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>1 Fully Responsive Website</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Mobile-Friendly Layout</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Initial SEO Setup</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Contact Form Integration</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>1 Revision</ListItem>
             </List>
             <Divider inset="none" />
             <CardActions>
-              
-              </Typography>
               <Button variant="soft" color="neutral" endDecorator={<KeyboardArrowRight />}>
-               Contact Us
+                Contact Us
               </Button>
             </CardActions>
           </Card>
@@ -169,52 +133,20 @@ export default function Pricing() {
             invertedColors
             sx={{ bgcolor: 'black', minWidth: 300, maxWidth: 400 }}
           >
-            <Chip size="sm" variant="outlined">
-              STANDARD
-            </Chip>
+            <Chip size="sm" variant="outlined">STANDARD</Chip>
             <Typography level="h2">Standard</Typography>
+            {/* <Typography level="body-sm" sx={{ mt: 1, mb: 1 }}>₹9,999 / Project</Typography> */}
             <Divider inset="none" />
             <List size="sm" sx={{ mx: 'calc(-1 * var(--ListItem-paddingX))' }}>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                3 Custom Website Designs
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Mobile & Tablet Optimization
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Advanced SEO Setup
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Blog Integration
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Social Media Integration
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                3 Revisions
-              </ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Up to 3 Responsive Website Pages</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Mobile & Tablet Optimization</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Advanced SEO Setup</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>CMS or Blog Setup</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Social Media Integration</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>3 Revisions</ListItem>
             </List>
             <Divider inset="none" />
             <CardActions>
-              
               <Button endDecorator={<KeyboardArrowRight />}>Contact Us</Button>
             </CardActions>
           </Card>
@@ -230,48 +162,18 @@ export default function Pricing() {
               PREMIUM
             </Chip>
             <Typography level="h2">Premium</Typography>
+            {/* <Typography level="body-sm" sx={{ mt: 1, mb: 1 }}>₹19,999+ / Project</Typography> */}
             <Divider inset="none" />
             <List size="sm" sx={{ mx: 'calc(-1 * var(--ListItem-paddingX))' }}>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Unlimited Custom Websites
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Full Mobile & Desktop Optimization
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Full SEO Package with Analytics
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                E-commerce Integration
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Ongoing Support & Maintenance
-              </ListItem>
-              <ListItem>
-                <ListItemDecorator>
-                  <Check />
-                </ListItemDecorator>
-                Unlimited Revisions
-              </ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Unlimited Pages / Projects</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Full Mobile & Desktop Optimization</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Full SEO Package with Analytics</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>E-commerce Integration</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Ongoing Support & Maintenance</ListItem>
+              <ListItem><ListItemDecorator><Check /></ListItemDecorator>Unlimited Revisions</ListItem>
             </List>
             <Divider inset="none" />
             <CardActions>
-              
               <Button variant="soft" color="neutral" endDecorator={<KeyboardArrowRight />}>
                 Contact Us
               </Button>
