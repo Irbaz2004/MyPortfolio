@@ -152,14 +152,10 @@ export default function Pricing() {
             </List>
             <Divider inset="none" />
             <CardActions>
-              <Typography level="title-lg" sx={{ mr: 'auto' }}>
-                ₹15,000{' '}
-                <Typography textColor="text.tertiary" sx={{ fontSize: 'sm' }}>
-                  / one-time
-                </Typography>
+              
               </Typography>
               <Button variant="soft" color="neutral" endDecorator={<KeyboardArrowRight />}>
-                Sign Up
+               Contact Us
               </Button>
             </CardActions>
           </Card>
@@ -218,13 +214,8 @@ export default function Pricing() {
             </List>
             <Divider inset="none" />
             <CardActions>
-              <Typography level="title-lg" sx={{ mr: 'auto' }}>
-                ₹35,000{' '}
-                <Typography textColor="text.tertiary" sx={{ fontSize: 'sm' }}>
-                  / one-time
-                </Typography>
-              </Typography>
-              <Button endDecorator={<KeyboardArrowRight />}>Sign Up</Button>
+              
+              <Button endDecorator={<KeyboardArrowRight />}>Contact Us</Button>
             </CardActions>
           </Card>
 
@@ -280,12 +271,7 @@ export default function Pricing() {
             </List>
             <Divider inset="none" />
             <CardActions>
-              <Typography level="title-lg" sx={{ mr: 'auto' }}>
-                ₹80,000{' '}
-                <Typography textColor="text.tertiary" sx={{ fontSize: 'sm' }}>
-                  / one-time
-                </Typography>
-              </Typography>
+              
               <Button variant="soft" color="neutral" endDecorator={<KeyboardArrowRight />}>
                 Contact Us
               </Button>
