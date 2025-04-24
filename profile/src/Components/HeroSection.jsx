@@ -47,10 +47,11 @@ export default function HeroSection() {
       <div className="about" ref={textRef}>
         <h3>Hello, I'm</h3>
         <span className="highlighted-name">S Irbaz Ahmed</span>
-        <h2 className="title">Software Engineer</h2>
-        <p className="short-detail">
-          A passionate software engineer specializing in Full-Stack Development and Data Science. I create user-friendly, responsive, and visually appealing applications that bring ideas to life.
-        </p>
+        <h2 className="title">Full-Stack Developer</h2>
+<p className="short-detail">
+  A dedicated Full-Stack Developer with hands-on experience in building scalable web applications using the MERN stack. Skilled in both frontend and backend development, RESTful APIs, and data-driven projects. Passionate about delivering efficient, user-centric digital solutions.
+</p>
+
         <div className="button">
           <button onClick={handleNavigation}>Hire Me</button>
           <a href={resume} className="download-cv" download="Irbaz Ahmed CV.pdf">

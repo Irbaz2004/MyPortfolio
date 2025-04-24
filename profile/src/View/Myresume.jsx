@@ -99,30 +99,31 @@ export default function Myresume() {
             <ArrowOutwardOutlined />
           </div>
           <div className="experience-item">
-            <h3>2024-Present</h3>
-            <h4>Technical Support</h4>
-            <h5>Nexion Connects</h5>
-          </div>
+            <h3>2025-Present</h3>
+            <h4>Tech Support Lead</h4>
+            <h5>Helppme.in</h5>
+            </div>
 
           <div className="icon" onClick={handleNavigationAspira}>
             <ArrowOutwardOutlined />
           </div>
           <div className="experience-item">
-            <h3>3-Months (Intern)</h3>
-            <h4>Backend Developer</h4>
-            <h5>AspiraSys</h5>
+          <h3>2024-Present</h3>
+          <h4>Full Stack Developer</h4>
+          <h5>NexionConnects</h5>
           </div>
 
           <div className="icon" onClick={handleNavigationHelppme}>
             <ArrowOutwardOutlined />
           </div>
           <div className="experience-item">
-            <h3>2024-Present</h3>
-            <h4>Technical Support Team Lead</h4>
-            <h5>Helppme.in</h5>
+          <h3>3 Months (Internship)</h3>
+          <h4>Backend Developer Intern</h4>
+          <h5>AspiraSys</h5>
           </div>
         </div>
       </div>
     </div>
   );
 }
+
